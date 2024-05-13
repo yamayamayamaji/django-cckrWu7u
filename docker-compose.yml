@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  image-analysis-app:
+    build: ./containers/image-analysis-app
+    volumes:
+      - ./image_analysis_project:/workspace:cached
+      - ./containers/image-analysis-app/entrypoint.sh:/entrypoint.sh
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    networks:
+      - image-analysis
+
+  db:
+    build: ./containers/mysql
+    restart: unless-stopped
+    volumes:
+      - db-data:/var/lib/mysql
+    hostname: ${MYSQL_HOST}
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    networks:
+      - image-analysis
+    command: --default-authentication-plugin=mysql_native_password
+
+networks:
+  image-analysis:
+    driver: bridge
+
+volumes:
+  db-data:

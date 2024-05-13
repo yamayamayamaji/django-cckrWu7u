@@ -1,0 +1,6 @@
+{
+    "dockerComposeFile": ["../docker-compose.yml", "docker-compose.yml"],
+    "service": "image-analysis-app",
+    "workspaceFolder": "/workspace",
+    "forwardPorts": ["3306"]
+}
