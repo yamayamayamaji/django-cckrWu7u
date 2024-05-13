@@ -14,8 +14,8 @@ def analyze(request):
     # ユースケース実行
     repository = AIAnalysisLogRepository()
     input = AnalyzeImageInput(image_path=image_path)
-    controller = AnalyzeImageUseCase(repository)
-    output: AnalyzeImageOutput = controller.execute(input)
+    use_case = AnalyzeImageUseCase(repository)
+    output: AnalyzeImageOutput = use_case.execute(input)
 
     # レスポンス
     return JsonResponse(output.model_dump())

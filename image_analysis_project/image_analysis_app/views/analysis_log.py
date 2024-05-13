@@ -9,8 +9,8 @@ def analysis_log(request, log_id):
     # ユースケース実行
     repository = AIAnalysisLogRepository()
     input = GetAnalysisLogInput(log_id=log_id)
-    controller = GetAnalysisLogUseCase(repository)
-    output: GetAnalysisLogOutput = controller.execute(input)
+    use_case = GetAnalysisLogUseCase(repository)
+    output: GetAnalysisLogOutput = use_case.execute(input)
 
     # レスポンス
     return JsonResponse(output.model_dump())
