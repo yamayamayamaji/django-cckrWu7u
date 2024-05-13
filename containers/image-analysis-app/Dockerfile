@@ -6,4 +6,6 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     pkg-config libxmlsec1-dev libxmlsec1-openssl clang \
     && apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
+WORKDIR /workspace
+
 ENTRYPOINT /bin/bash /entrypoint.sh
