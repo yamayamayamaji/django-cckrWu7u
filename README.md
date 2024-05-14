@@ -1,3 +1,7 @@
+> **レビュアーの方へ**: 開発者からのメモを[こちらのドキュメント](docs/DEVELOPER_NOTE.md)に記載しています。  
+  
+  
+---
 # Image Analysis Development Environment
 
 このリポジトリは、Image Analysis Projectの開発環境を提供します。開発環境は、アプリケーションとライブラリを含むDjangoプロジェクトと、それらを実行するためのDockerコンテナで構成されています。
